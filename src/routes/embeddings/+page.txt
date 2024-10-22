@@ -1,0 +1,63 @@
+<script lang="ts">
+    let content = ''; // Variable para almacenar el contenido de la caja de texto
+    let responseMessage = ''; // Variable para mostrar la respuesta al usuario
+    let embeddings = []; // Variable para almacenar los embeddings recuperados
+
+    const handleSubmit = async () => {
+      responseMessage = ''; // Reinicia el mensaje de respuesta
+  
+      // Verifica que el contenido no esté vacío
+      if (!content.trim()) {
+        responseMessage = 'Por favor, ingresa algún contenido.';
+        return;
+      }
+  
+      try {
+        const response = await fetch('/api/resources', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ content }), // Envía el contenido como JSON
+        });
+  
+        if (!response.ok) {
+          throw new Error('Error al crear el recurso');
+        }
+  
+        const data = await response.json();
+        responseMessage = data.message; // Muestra la respuesta del servidor
+      } catch (error) {
+        console.error('Error en el manejo del envío:', error);
+        responseMessage = 'Ocurrió un error al crear el recurso.';
+      }
+    };
+
+    const handleRetrieve = async () => {
+      responseMessage = ''; // Reinicia el mensaje de respuesta
+  
+      try {
+        const response = await fetch('/api/resources'); // Cambia la ruta según tu API
+        if (!response.ok) {
+          throw new Error('Error al recuperar los embeddings');
+        }
+  
+        embeddings = await response.json(); // Almacena los embeddings en la variable
+      } catch (error) {
+        console.error('Error en la recuperación de embeddings:', error);
+        responseMessage = 'Ocurrió un error al recuperar los embeddings.';
+      }
+    };
+</script>
+
+<main>
+    <h1>Crea un nuevo recurso</h1>
+    <textarea
+      bind:value={content}
+      placeholder="Ingresa el contenido aquí..."
+      rows="4"
+      cols="50"
+    ></textarea>
+    <br />
+    <button on:click={handleSubmit}>Crear Recurso</button>
+    <button on:click={handleRetrieve}>Recuperar Embeddi
