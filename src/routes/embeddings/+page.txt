@@ -60,4 +60,52 @@
     ></textarea>
     <br />
     <button on:click={handleSubmit}>Crear Recurso</button>
-    <button on:click={handleRetrieve}>Recuperar Embeddi
+    <button on:click={handleRetrieve}>Recuperar Embeddings</button> <!-- Nuevo botón -->
+
+    {#if responseMessage}
+      <p>{responseMessage}</p> <!-- Muestra la respuesta al usuario -->
+    {/if}
+
+    {#if embeddings.length > 0} <!-- Mostrar embeddings si existen -->
+      <h2>Embeddings Recuperados:</h2>
+      <ul>
+        {#each embeddings as embedding}
+          <li>{JSON.stringify(embedding)}</li> <!-- Ajusta esto según el formato de tus embeddings -->
+        {/each}
+      </ul>
+    {/if}
+</main>
+
+<style>
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
+  
+    textarea {
+      width: 100%;
+      max-width: 600px;
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+  
+    button {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 0.5rem 0; /* Añadido margen para separación */
+    }
+  
+    button:hover {
+      background-color: #45a049;
+    }
+</style>
