@@ -8,6 +8,13 @@
       "when": 1729613679749,
       "tag": "0000_flashy_elektra",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1729695321715,
+      "tag": "0001_pretty_shiva",
+      "breakpoints": true
     }
   ]
 }

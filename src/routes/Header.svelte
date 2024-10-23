@@ -25,8 +25,8 @@
 			<li aria-current={$page.url.pathname.startsWith('/sverdle') ? 'page' : undefined}>
 				<a href="/sverdle">Sverdle</a>
 			</li>
-			<li aria-current={$page.url.pathname.startsWith('/embeddings') ? 'page' : undefined}>
-				<a href="/embeddings">Embeddings</a>
+			<li aria-current={$page.url.pathname.startsWith('/pacientes') ? 'page' : undefined}>
+				<a href="/pacientes">Pacientes</a>
 			</li>
 		</ul>
 		<svg viewBox="0 0 2 3" aria-hidden="true">

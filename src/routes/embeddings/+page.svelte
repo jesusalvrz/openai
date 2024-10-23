@@ -9,7 +9,7 @@
     let responseMessage = '';
     let embeddingsList: Embedding[] = [];
   
-    const handleSubmit = async () => {
+    const crearEmbedding = async () => {
       responseMessage = '';
   
       if (!content.trim()) {
@@ -38,7 +38,7 @@
       }
     };
 
-    const handleFetchEmbeddings = async () => {
+    const recuperarEmbedding = async () => {
         try {
             const response = await fetch('/api/resources');
             if (!response.ok) {
@@ -61,8 +61,8 @@
         cols="50"
     ></textarea>
     <br />
-    <button on:click={handleSubmit}>Crear Recurso</button>
-    <button on:click={handleFetchEmbeddings}>Recuperar Embeddings</button>
+    <button on:click={crearEmbedding}>Crear Recurso</button>
+    <button on:click={recuperarEmbedding}>Recuperar Embeddings</button>
 
     {#if responseMessage}
         <p>{responseMessage}</p>
